@@ -4,7 +4,7 @@
   <%= category.name %>
 <% end %>
 <% @post.comments.each do |comment| %>
-  <%= "#{@user.username} says: #{comment.content} %>
+  <%= @user.username says: comment.content %>
 <% end %>
 
 <%= form_for @comment do |f| %>
@@ -12,6 +12,9 @@
   <%= f.label "Comment" %>
   <%= f.text_area :content %>
   <%= f.collection_select :user_id, User.all, :id, :username, include_blank: "username" %>
+  <%= #f.fields_for :user, @comment.build_user do |user_attributes| %>
+    <%= #user_attributes.text_field :username %>
+  <% #end %>
   <%= f.submit %>
 <% end %>
 
