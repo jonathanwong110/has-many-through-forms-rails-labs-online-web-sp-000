@@ -11,6 +11,7 @@
   <%= f.hidden_field :post_id, value: @post.id %>
   <%= f.label "Comment" %>
   <%= f.text_area :content %>
+  <%= f.label "Username" %>
   <%= f.collection_select :user_id, User.all, :id, :username, include_blank: "username" %>
   <%= f.fields_for :users, @post.users.build do |users_fields| %>
     <% users_fields.text_field :username %>
