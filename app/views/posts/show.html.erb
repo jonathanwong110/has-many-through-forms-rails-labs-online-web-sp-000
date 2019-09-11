@@ -8,7 +8,7 @@
   <%= " #{comment.user.username} says: #{comment.content}" %>
 <% end %>
 
-<%= form_for @post.comments.build do |f| %>
+<%= form_for @comment do |f| %>
   <%= f.hidden_field :post_id, value: @post.id %>
   <%= f.label "Comment" %>
   <%= f.text_area :content %>
