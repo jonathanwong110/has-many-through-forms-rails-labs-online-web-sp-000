@@ -1,16 +1,18 @@
+<% require 'pry' %>
 <h1> <%= @post.title %> </h1>
 <h1> <%= @post.content %> </h1>
 <% @post.categories.each do |category| %>
   <%= category.name %>
 <% end %>
 <% @post.comments.each do |comment| %>
-  <%= comment.content %>
+  <%= " says: #{comment.content}" %>
 <% end %>
 
 <%= form_for @comment do |f| %>
-  <%= f.label "Content" %>
-  <%= f.text_area :comment_content %>
-  <%= select_tag 'comment_user_id', options_for_select(@users.collect |u| [u.username, u.id]) %>
+  <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.label "Comment" %>
+  <%= f.text_area :content %>
+  <%= f.collection_select :user_id, User.all, :id, :username, include_blank: "username" %>
   <%= f.submit %>
 <% end %>
 
