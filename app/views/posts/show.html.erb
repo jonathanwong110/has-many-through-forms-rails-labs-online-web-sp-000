@@ -12,7 +12,7 @@
   <%= f.label "Comment" %>
   <%= f.text_area :content %>
   <%= f.collection_select :user_id, User.all, :id, :username, include_blank: "username" %>
-  <%= f.fields_for :user, @comment.build_user do |user_attributes| %>
+  <%= f.fields_for :user, @comment.build do |user_attributes| %>
     <%= user_attributes.text_field :username %>
   <% end %>
   <%= f.submit %>
