@@ -5,7 +5,7 @@
   <%= category.name %>
 <% end %>
 <% @post.comments.each do |comment| %>
-  <%= " says: #{comment.content}" %>
+  <%= "#{comment.user.username} says: #{comment.content}" %>
 <% end %>
 
 <%= form_for @comment do |f| %>
